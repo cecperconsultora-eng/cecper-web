@@ -175,116 +175,13 @@ footer a:hover{color:var(--gold)}
           </select>
         </div>
         <div class="form-row">
-          <label>Adjuntar CV (PDF)</label>
-          <div class="file-area" onclick="document.getElementById('cvFile').click()">
-            <strong>📎 Seleccionar archivo</strong>
-            <p>PDF · Máx. 5MB</p>
-            <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" onchange="showFileName(this)">
-            <div class="file-name" id="fileName"></div>
-          </div>
+          <label>Link de tu CV</label>
+          <input type="url" name="cv_link" placeholder="Ej: drive.google.com/... o linkedin.com/in/...">
+          <p style="font-size:11px;color:#666;margin-top:6px;line-height:1.5">Podés compartir tu CV desde Google Drive, LinkedIn, Dropbox u otro servicio. Asegurate de que el link sea público.</p>
         </div>
         <button type="submit" class="btn-enviar">Enviar CV</button>
         <p class="form-note">Tu información es confidencial y solo será utilizada para búsquedas laborales de CECPER.</p>
       </form>
     </div>
   </div>
-</div>
-
-<div class="admin-wrap">
-  <div class="admin-inner">
-    <div class="col-title" style="margin-bottom:.5rem">Panel de administración</div>
-    <p style="font-size:13px;color:#888;margin-bottom:1.25rem">Acceso exclusivo para el equipo CECPER.</p>
-    <button class="admin-toggle-btn" onclick="toggleAdmin()">🔧 Gestionar ofertas laborales</button>
-    <div class="admin-panel" id="adminPanel">
-      <div class="col-heading" style="margin-bottom:1.5rem">Agregar nueva oferta</div>
-      <div class="admin-form">
-        <div><label>Puesto / Cargo</label><input type="text" id="aPuesto" placeholder="Ej: Analista Contable"></div>
-        <div><label>Área</label>
-          <select id="aArea">
-            <option value="">Seleccioná...</option>
-            <option>Contabilidad e Impuestos</option>
-            <option>Asesoramiento Legal</option>
-            <option>Recursos Humanos</option>
-            <option>Arquitectura</option>
-            <option>Ingeniería de Procesos</option>
-            <option>Psicología Organizacional</option>
-            <option>Higiene y Seguridad</option>
-            <option>Administración</option>
-          </select>
-        </div>
-        <div><label>Modalidad</label>
-          <select id="aModalidad"><option>Presencial</option><option>Remoto</option><option>Híbrido</option></select>
-        </div>
-        <div><label>Tipo</label>
-          <select id="aTipo"><option>Tiempo completo</option><option>Medio tiempo</option><option>Freelance / Consultoría</option><option>Pasantía</option></select>
-        </div>
-        <div class="full"><label>Descripción breve</label><textarea id="aDesc" placeholder="Resumen del puesto y perfil buscado..."></textarea></div>
-        <div class="full"><label>Requisitos (uno por línea)</label><textarea id="aReqs" placeholder="Ej: Graduado en Contabilidad&#10;Experiencia mínima 2 años&#10;Manejo de Excel avanzado"></textarea></div>
-      </div>
-      <button class="btn-agregar" onclick="agregarOferta()">+ Publicar oferta</button>
-      <div class="admin-list">
-        <div class="col-title" style="margin-bottom:.75rem">Ofertas publicadas</div>
-        <div id="adminList"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer>
-  © 2026 <span>CECPER</span> Consultoría Integral · Salta, Argentina ·
-  <a href="index.html">Volver al sitio</a>
-  <a href="index.html#contact">Contacto</a>
-</footer>
-
-<a class="wa-btn" href="https://wa.me/5493876846580?text=Hola%20CECPER!%20Quiero%20informaci%C3%B3n%20sobre%20las%20b%C3%BAsquedas%20laborales." target="_blank">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<script>
-let ofertas=JSON.parse(localStorage.getItem('cecper_ofertas')||'[]');
-function saveOfertas(){localStorage.setItem('cecper_ofertas',JSON.stringify(ofertas))}
-function renderOfertas(){
-  const list=document.getElementById('ofertasList');
-  const adminList=document.getElementById('adminList');
-  list.innerHTML='';adminList.innerHTML='';
-  if(ofertas.length===0){
-    list.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><h3>No hay búsquedas activas por el momento</h3><p>Dejá tu CV y te contactamos en cuanto tengamos una búsqueda que se ajuste a tu perfil.</p></div>`;
-    adminList.innerHTML='<p class="admin-empty">No hay ofertas publicadas todavía.</p>';
-    return;
-  }
-  ofertas.forEach((o,i)=>{
-    const reqs=o.requisitos?o.requisitos.split('\n').filter(r=>r.trim()).map(r=>`<li>${r}</li>`).join(''):'';
-    const card=document.createElement('div');
-    card.className='oferta';
-    card.innerHTML=`<div class="oferta-top"><div><h3>${o.puesto}</h3><div class="oferta-meta"><span>📁 ${o.area}</span><span>📍 Salta · ${o.modalidad}</span><span>⏱ ${o.tipo}</span></div><div class="oferta-desc">${o.descripcion}</div></div><span class="oferta-badge">Activa</span></div><span class="oferta-toggle">Ver requisitos ▾</span><div class="oferta-detail">${reqs?`<h4>Requisitos</h4><ul>${reqs}</ul>`:''}<button class="btn-postular" onclick="document.getElementById('cvForm').scrollIntoView({behavior:'smooth'});event.stopPropagation()">Postularme a esta búsqueda</button></div>`;
-    card.addEventListener('click',()=>{const o2=card.classList.toggle('open');card.querySelector('.oferta-toggle').textContent=o2?'Ocultar ▴':'Ver requisitos ▾';});
-    list.appendChild(card);
-    const row=document.createElement('div');
-    row.className='admin-item';
-    row.innerHTML=`<div class="admin-item-info"><strong>${o.puesto}</strong><span>${o.area} · ${o.modalidad}</span></div><button class="btn-del" onclick="eliminarOferta(${i})">Eliminar</button>`;
-    adminList.appendChild(row);
-  });
-}
-function agregarOferta(){
-  const p=document.getElementById('aPuesto').value.trim();
-  const a=document.getElementById('aArea').value;
-  const d=document.getElementById('aDesc').value.trim();
-  if(!p||!a||!d){alert('Completá al menos el puesto, área y descripción.');return;}
-  ofertas.push({puesto:p,area:a,modalidad:document.getElementById('aModalidad').value,tipo:document.getElementById('aTipo').value,descripcion:d,requisitos:document.getElementById('aReqs').value});
-  saveOfertas();renderOfertas();
-  ['aPuesto','aDesc','aReqs'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('aArea').value='';
-}
-function eliminarOferta(i){if(confirm('¿Eliminar esta oferta?')){ofertas.splice(i,1);saveOfertas();renderOfertas();}}
-function toggleAdmin(){
-  const panel=document.getElementById('adminPanel');
-  if(panel.classList.contains('visible')){panel.classList.remove('visible');return;}
-  const pass=prompt('Ingresá la contraseña de administrador:');
-  if(pass==='Luchogyt01'){panel.classList.add('visible');}
-  else if(pass!==null){alert('Contraseña incorrecta.');}
-}
-function showFileName(input){const fn=document.getElementById('fileName');if(input.files.length>0){fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
-renderOfertas();
-</script>
-</body>
-</html>
+</div
