@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -192,7 +193,7 @@ footer a:hover{color:var(--gold)}
 <div class="admin-wrap">
   <div class="admin-inner">
     <div class="col-title" style="margin-bottom:.5rem">Panel de administración</div>
-    <p style="font-size:13px;color:#888;margin-bottom:1.25rem">Gestioná las ofertas laborales activas. Solo visible para el equipo CECPER.</p>
+    <p style="font-size:13px;color:#888;margin-bottom:1.25rem">Acceso exclusivo para el equipo CECPER.</p>
     <button class="admin-toggle-btn" onclick="toggleAdmin()">🔧 Gestionar ofertas laborales</button>
     <div class="admin-panel" id="adminPanel">
       <div class="col-heading" style="margin-bottom:1.5rem">Agregar nueva oferta</div>
@@ -275,7 +276,13 @@ function agregarOferta(){
   document.getElementById('aArea').value='';
 }
 function eliminarOferta(i){if(confirm('¿Eliminar esta oferta?')){ofertas.splice(i,1);saveOfertas();renderOfertas();}}
-function toggleAdmin(){document.getElementById('adminPanel').classList.toggle('visible');}
+function toggleAdmin(){
+  const panel=document.getElementById('adminPanel');
+  if(panel.classList.contains('visible')){panel.classList.remove('visible');return;}
+  const pass=prompt('Ingresá la contraseña de administrador:');
+  if(pass==='Luchogyt01'){panel.classList.add('visible');}
+  else if(pass!==null){alert('Contraseña incorrecta.');}
+}
 function showFileName(input){const fn=document.getElementById('fileName');if(input.files.length>0){fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
 renderOfertas();
 </script>
