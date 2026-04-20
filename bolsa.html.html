@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolsa de Trabajo — CECPER</title>
+<meta name="description" content="Buscamos talentos para Salta y el NOA. Dejá tu CV en CECPER y te contactamos ante nuevas búsquedas.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-lighter:#FBF5E6;--dark:#1A1A1A}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--dark);background:#fff}
+.topbar{background:#111;padding:.55rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.topbar a{font-size:12px;color:#aaa;text-decoration:none}
+.topbar a:hover{color:var(--gold)}
+.topbar-social{display:flex;gap:.6rem}
+.topbar-social a{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#aaa;font-size:11px;font-weight:700;transition:all .2s}
+.topbar-social a:hover{border-color:var(--gold);color:var(--gold)}
+nav{background:#fff;border-bottom:1px solid #e8e0cc;padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.nav-logo{font-weight:700;color:var(--dark);font-size:1.2rem;letter-spacing:2px;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-sub{font-size:10px;color:#999;letter-spacing:1px;display:block;font-weight:400;margin-top:1px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:14px;color:#555;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#fff;border:none;padding:9px 22px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#9a7c32}
+.hero{background:var(--dark);padding:4rem 2rem;text-align:center}
+.hero::after{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--gold),#e8d06a,var(--gold));opacity:.7;margin-top:4rem}
+.hero-badge{display:inline-block;font-size:11px;letter-spacing:4px;color:var(--gold);border:1px solid rgba(184,150,62,.4);padding:5px 16px;border-radius:4px;margin-bottom:1.25rem;font-weight:500}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:.75rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:.95rem;color:#bbb;max-width:520px;margin:0 auto}
+.main{max-width:1100px;margin:0 auto;padding:3.5rem 2rem;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start}
+.col-title{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:600;text-transform:uppercase;margin-bottom:.5rem}
+.col-heading{font-size:1.4rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.col-sub{font-size:14px;color:#777;margin-bottom:1.75rem;line-height:1.6}
+.oferta{background:#fff;border:1px solid #e8e0cc;border-radius:10px;padding:1.5rem;margin-bottom:1rem;transition:border-color .2s,transform .15s;cursor:pointer}
+.oferta:hover{border-color:var(--gold);transform:translateY(-2px)}
+.oferta.open{border-color:var(--gold);border-width:1.5px}
+.oferta-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.oferta-badge{font-size:11px;font-weight:600;letter-spacing:1px;color:#2e7d32;background:#e8f5e9;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.oferta h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+.oferta-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}
+.oferta-meta span{font-size:12px;color:#888;display:flex;align-items:center;gap:4px}
+.oferta-desc{font-size:13px;color:#666;line-height:1.6}
+.oferta-detail{display:none;border-top:1px solid #f0e8d0;margin-top:1rem;padding-top:1rem}
+.oferta.open .oferta-detail{display:block}
+.oferta-detail h4{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:.5rem;letter-spacing:.5px;text-transform:uppercase}
+.oferta-detail ul{list-style:none;padding:0;margin-bottom:1rem}
+.oferta-detail ul li{font-size:13px;color:#666;padding:3px 0 3px 14px;position:relative}
+.oferta-detail ul li::before{content:"▸";position:absolute;left:0;color:var(--gold);font-size:10px;top:5px}
+.btn-postular{background:var(--gold);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.btn-postular:hover{background:#9a7c32}
+.oferta-toggle{font-size:12px;color:var(--gold);font-weight:600;margin-top:.5rem;display:inline-block}
+.empty{background:#fafaf7;border:2px dashed #e8e0cc;border-radius:10px;padding:3rem;text-align:center}
+.empty-icon{font-size:2.5rem;margin-bottom:1rem}
+.empty h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.empty p{font-size:13px;color:#888;line-height:1.6}
+.col-form{position:sticky;top:80px}
+.form-card{background:#1a1a1a;border-radius:12px;padding:2rem;border:1px solid rgba(184,150,62,.2)}
+.form-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.form-card p{font-size:13px;color:#888;margin-bottom:1.5rem;line-height:1.6}
+.form-row{margin-bottom:.9rem}
+.form-row label{font-size:11px;color:#aaa;display:block;margin-bottom:5px;letter-spacing:.5px;font-weight:600}
+.form-row input,.form-row select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:9px 13px;color:#fff;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-row input:focus,.form-row select:focus{border-color:var(--gold)}
+.form-row input::placeholder{color:rgba(255,255,255,.3)}
+.form-row select option{color:#333;background:#fff}
+.file-area{border:1px dashed rgba(184,150,62,.4);border-radius:7px;padding:1.25rem;text-align:center;cursor:pointer;transition:border-color .2s;background:rgba(184,150,62,.05)}
+.file-area:hover{border-color:var(--gold)}
+.file-area p{font-size:12px;color:#888;margin-top:.4rem}
+.file-area strong{font-size:13px;color:var(--gold)}
+.file-area input{display:none}
+.file-name{font-size:12px;color:#7ecba1;margin-top:.5rem;display:none}
+.btn-enviar{background:var(--gold);color:#fff;border:none;padding:12px;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-top:.5rem;transition:background .2s}
+.btn-enviar:hover{background:#9a7c32}
+.form-note{font-size:11px;color:#555;text-align:center;margin-top:.75rem;line-height:1.5}
+.admin-wrap{background:#fafaf7;border-top:1px solid #f0ece0;padding:4rem 2rem}
+.admin-inner{max-width:1100px;margin:0 auto}
+.admin-toggle-btn{background:var(--dark);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;margin-bottom:1.5rem}
+.admin-panel{display:none;background:#fff;border:1px solid #e8e0cc;border-radius:12px;padding:2rem}
+.admin-panel.visible{display:block}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.admin-form .full{grid-column:1/-1}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;border:1px solid #e0d9c8;border-radius:7px;padding:9px 13px;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;color:var(--dark)}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--gold)}
+.admin-form label{font-size:11px;font-weight:700;color:#888;display:block;margin-bottom:4px;letter-spacing:.5px;text-transform:uppercase}
+.admin-form textarea{height:80px;resize:none}
+.btn-agregar{background:var(--gold);color:#fff;border:none;padding:11px 28px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-agregar:hover{background:#9a7c32}
+.admin-list{margin-top:1.5rem;border-top:1px solid #f0ece0;padding-top:1.5rem}
+.admin-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;border:1px solid #e8e0cc;border-radius:8px;margin-bottom:.5rem;background:#fafaf7}
+.admin-item-info strong{font-size:14px;font-weight:700;color:var(--dark)}
+.admin-item-info span{font-size:12px;color:#888;display:block;margin-top:2px}
+.btn-del{background:#fee2e2;color:#c62828;border:none;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer}
+.btn-del:hover{background:#fecaca}
+.admin-empty{font-size:13px;color:#aaa;text-align:center;padding:1.5rem}
+footer{background:#111;color:#555;text-align:center;padding:1.5rem;font-size:12px}
+footer span{color:var(--gold)}
+footer a{color:#555;text-decoration:none;margin:0 .75rem}
+footer a:hover{color:var(--gold)}
+.wa-btn{position:fixed;bottom:2rem;right:2rem;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:999;transition:transform .2s}
+.wa-btn:hover{transform:scale(1.1)}
+.wa-btn svg{width:26px;height:26px;fill:#fff}
+@media(max-width:768px){
+  .main{grid-template-columns:1fr}
+  .col-form{position:static}
+  .admin-form{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html">← Volver al sitio</a>
+  <div class="topbar-social">
+    <a href="#" title="Facebook">f</a>
+    <a href="#" title="Instagram">ig</a>
+    <a href="#" title="LinkedIn">in</a>
+    <a href="https://wa.me/5493876846580?text=Hola%20CECPER!" target="_blank">W</a>
+  </div>
+</div>
+
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">CEC<span>PER</span></a>
+    <span class="nav-sub">Bolsa de Trabajo</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#about">Quiénes somos</a>
+    <a href="index.html#services">Servicios</a>
+    <a href="index.html#contact">Contacto</a>
+  </div>
+  <a class="nav-cta" href="index.html#contact">Consulta gratuita</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">CECPER · BOLSA DE TRABAJO</div>
+  <h1>Encontrá tu próximo<br><em>desafío profesional</em></h1>
+  <p>Dejá tu CV y te contactamos ante búsquedas que se ajusten a tu perfil en Salta y el NOA.</p>
+</div>
+
+<div class="main">
+  <div class="col-ofertas">
+    <div class="col-title">Búsquedas activas</div>
+    <div class="col-heading">Oportunidades laborales</div>
+    <p class="col-sub">Revisá las búsquedas vigentes. Si no encontrás tu perfil, dejá tu CV y te tenemos en cuenta para futuras búsquedas.</p>
+    <div id="ofertasList"></div>
+  </div>
+
+  <div class="col-form">
+    <div class="form-card">
+      <h3>Dejá tu CV</h3>
+      <p>Completá el formulario y te contactamos cuando tengamos una búsqueda que se ajuste a tu perfil.</p>
+      <form id="cvForm" action="https://formspree.io/f/xeevegbg" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Nuevo CV recibido — Bolsa de Trabajo CECPER">
+        <div class="form-row"><label>Nombre y apellido</label><input type="text" name="nombre" placeholder="Tu nombre completo" required></div>
+        <div class="form-row"><label>Email</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="form-row"><label>Teléfono</label><input type="tel" name="telefono" placeholder="387 000-0000"></div>
+        <div class="form-row">
+          <label>Área de interés</label>
+          <select name="area" required>
+            <option value="">Seleccioná un área...</option>
+            <option>Contabilidad e Impuestos</option>
+            <option>Asesoramiento Legal / Derecho</option>
+            <option>Recursos Humanos</option>
+            <option>Arquitectura y Espacio</option>
+            <option>Ingeniería de Procesos</option>
+            <option>Psicología Organizacional</option>
+            <option>Higiene y Seguridad Laboral</option>
+            <option>Administración General</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Adjuntar CV (PDF)</label>
+          <div class="file-area" onclick="document.getElementById('cvFile').click()">
+            <strong>📎 Seleccionar archivo</strong>
+            <p>PDF · Máx. 5MB</p>
+            <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" onchange="showFileName(this)">
+            <div class="file-name" id="fileName"></div>
+          </div>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar CV</button>
+        <p class="form-note">Tu información es confidencial y solo será utilizada para búsquedas laborales de CECPER.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="admin-wrap">
+  <div class="admin-inner">
+    <div class="col-title" style="margin-bottom:.5rem">Panel de administración</div>
+    <p style="font-size:13px;color:#888;margin-bottom:1.25rem">Gestioná las ofertas laborales activas. Solo visible para el equipo CECPER.</p>
+    <button class="admin-toggle-btn" onclick="toggleAdmin()">🔧 Gestionar ofertas laborales</button>
+    <div class="admin-panel" id="adminPanel">
+      <div class="col-heading" style="margin-bottom:1.5rem">Agregar nueva oferta</div>
+      <div class="admin-form">
+        <div><label>Puesto / Cargo</label><input type="text" id="aPuesto" placeholder="Ej: Analista Contable"></div>
+        <div><label>Área</label>
+          <select id="aArea">
+            <option value="">Seleccioná...</option>
+            <option>Contabilidad e Impuestos</option>
+            <option>Asesoramiento Legal</option>
+            <option>Recursos Humanos</option>
+            <option>Arquitectura</option>
+            <option>Ingeniería de Procesos</option>
+            <option>Psicología Organizacional</option>
+            <option>Higiene y Seguridad</option>
+            <option>Administración</option>
+          </select>
+        </div>
+        <div><label>Modalidad</label>
+          <select id="aModalidad"><option>Presencial</option><option>Remoto</option><option>Híbrido</option></select>
+        </div>
+        <div><label>Tipo</label>
+          <select id="aTipo"><option>Tiempo completo</option><option>Medio tiempo</option><option>Freelance / Consultoría</option><option>Pasantía</option></select>
+        </div>
+        <div class="full"><label>Descripción breve</label><textarea id="aDesc" placeholder="Resumen del puesto y perfil buscado..."></textarea></div>
+        <div class="full"><label>Requisitos (uno por línea)</label><textarea id="aReqs" placeholder="Ej: Graduado en Contabilidad&#10;Experiencia mínima 2 años&#10;Manejo de Excel avanzado"></textarea></div>
+      </div>
+      <button class="btn-agregar" onclick="agregarOferta()">+ Publicar oferta</button>
+      <div class="admin-list">
+        <div class="col-title" style="margin-bottom:.75rem">Ofertas publicadas</div>
+        <div id="adminList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 <span>CECPER</span> Consultoría Integral · Salta, Argentina ·
+  <a href="index.html">Volver al sitio</a>
+  <a href="index.html#contact">Contacto</a>
+</footer>
+
+<a class="wa-btn" href="https://wa.me/5493876846580?text=Hola%20CECPER!%20Quiero%20informaci%C3%B3n%20sobre%20las%20b%C3%BAsquedas%20laborales." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+let ofertas=JSON.parse(localStorage.getItem('cecper_ofertas')||'[]');
+function saveOfertas(){localStorage.setItem('cecper_ofertas',JSON.stringify(ofertas))}
+function renderOfertas(){
+  const list=document.getElementById('ofertasList');
+  const adminList=document.getElementById('adminList');
+  list.innerHTML='';adminList.innerHTML='';
+  if(ofertas.length===0){
+    list.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><h3>No hay búsquedas activas por el momento</h3><p>Dejá tu CV y te contactamos en cuanto tengamos una búsqueda que se ajuste a tu perfil.</p></div>`;
+    adminList.innerHTML='<p class="admin-empty">No hay ofertas publicadas todavía.</p>';
+    return;
+  }
+  ofertas.forEach((o,i)=>{
+    const reqs=o.requisitos?o.requisitos.split('\n').filter(r=>r.trim()).map(r=>`<li>${r}</li>`).join(''):'';
+    const card=document.createElement('div');
+    card.className='oferta';
+    card.innerHTML=`<div class="oferta-top"><div><h3>${o.puesto}</h3><div class="oferta-meta"><span>📁 ${o.area}</span><span>📍 Salta · ${o.modalidad}</span><span>⏱ ${o.tipo}</span></div><div class="oferta-desc">${o.descripcion}</div></div><span class="oferta-badge">Activa</span></div><span class="oferta-toggle">Ver requisitos ▾</span><div class="oferta-detail">${reqs?`<h4>Requisitos</h4><ul>${reqs}</ul>`:''}<button class="btn-postular" onclick="document.getElementById('cvForm').scrollIntoView({behavior:'smooth'});event.stopPropagation()">Postularme a esta búsqueda</button></div>`;
+    card.addEventListener('click',()=>{const o2=card.classList.toggle('open');card.querySelector('.oferta-toggle').textContent=o2?'Ocultar ▴':'Ver requisitos ▾';});
+    list.appendChild(card);
+    const row=document.createElement('div');
+    row.className='admin-item';
+    row.innerHTML=`<div class="admin-item-info"><strong>${o.puesto}</strong><span>${o.area} · ${o.modalidad}</span></div><button class="btn-del" onclick="eliminarOferta(${i})">Eliminar</button>`;
+    adminList.appendChild(row);
+  });
+}
+function agregarOferta(){
+  const p=document.getElementById('aPuesto').value.trim();
+  const a=document.getElementById('aArea').value;
+  const d=document.getElementById('aDesc').value.trim();
+  if(!p||!a||!d){alert('Completá al menos el puesto, área y descripción.');return;}
+  ofertas.push({puesto:p,area:a,modalidad:document.getElementById('aModalidad').value,tipo:document.getElementById('aTipo').value,descripcion:d,requisitos:document.getElementById('aReqs').value});
+  saveOfertas();renderOfertas();
+  ['aPuesto','aDesc','aReqs'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('aArea').value='';
+}
+function eliminarOferta(i){if(confirm('¿Eliminar esta oferta?')){ofertas.splice(i,1);saveOfertas();renderOfertas();}}
+function toggleAdmin(){document.getElementById('adminPanel').classList.toggle('visible');}
+function showFileName(input){const fn=document.getElementById('fileName');if(input.files.length>0){fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
+renderOfertas();
+</script>
+</body>
+</html>

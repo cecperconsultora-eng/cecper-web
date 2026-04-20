@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CECPER — Consultoría Integral · Salta, Argentina</title>
+<meta name="description" content="CECPER es una consultoría integral en Salta, Argentina. Contabilidad, derecho, recursos humanos, arquitectura, ingeniería, psicología e higiene y seguridad.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-light:#F0D98A;--gold-lighter:#FBF5E6;--dark:#1A1A1A;--dark2:#2C2C2C}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--dark);background:#fff}
+.topbar{background:#111;padding:.55rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.topbar-left{display:flex;gap:1.5rem;align-items:center}
+.topbar-left span{font-size:12px;color:#aaa;display:flex;align-items:center;gap:5px}
+.topbar-left a{font-size:12px;color:#aaa;text-decoration:none;display:flex;align-items:center;gap:5px}
+.topbar-left a:hover{color:var(--gold)}
+.topbar-social{display:flex;gap:.6rem}
+.topbar-social a{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#aaa;text-decoration:none;font-size:11px;font-weight:700;transition:all .2s}
+.topbar-social a:hover{border-color:var(--gold);color:var(--gold)}
+nav{background:#fff;border-bottom:1px solid #e8e0cc;padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.nav-logo{font-weight:700;color:var(--dark);font-size:1.2rem;letter-spacing:2px;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-sub{font-size:10px;color:#999;letter-spacing:1px;display:block;font-weight:400;margin-top:1px}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:14px;color:#555;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#fff;border:none;padding:9px 22px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:#9a7c32}
+.hero{background:var(--dark);color:#fff;padding:6.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),#e8d06a,var(--gold));opacity:.7}
+.hero-badge{display:inline-block;font-size:11px;letter-spacing:4px;color:var(--gold);border:1px solid rgba(184,150,62,.4);padding:6px 18px;border-radius:4px;margin-bottom:1.5rem;font-weight:500}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;color:#fff;margin-bottom:1rem;line-height:1.2}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.05rem;color:#bbb;max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#fff;border:none;padding:14px 36px;border-radius:6px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:#9a7c32}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:14px 36px;border-radius:6px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.clients-strip{background:#f7f5f0;border-top:1px solid #ede8dc;border-bottom:1px solid #ede8dc;padding:1.25rem 2rem;text-align:center}
+.clients-strip p{font-size:11px;letter-spacing:3px;color:#aaa;font-weight:600;text-transform:uppercase;margin-bottom:1rem}
+.clients-logos{display:flex;gap:2.5rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.client-pill{background:#fff;border:1px solid #e0d9c8;border-radius:6px;padding:.5rem 1.25rem;font-size:13px;font-weight:600;color:#888;letter-spacing:.5px}
+.section{padding:4.5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:600;margin-bottom:.5rem;text-transform:uppercase}
+.section-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--dark);margin-bottom:1rem}
+.section-sub{color:#666;max-width:620px;line-height:1.75;margin-bottom:2.5rem;font-size:.95rem}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
+.about-text p{color:#555;line-height:1.75;font-size:.95rem;margin-bottom:1rem}
+.about-accent{border-left:3px solid var(--gold);padding-left:1.25rem;margin:1.5rem 0}
+.about-accent p{color:var(--dark);font-size:.95rem;line-height:1.7;font-style:italic}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{background:#fff;border:1px solid #e8e0cc;border-radius:10px;padding:1.5rem;text-align:center}
+.stat-bar{width:36px;height:3px;background:var(--gold);margin:0 auto 1rem;border-radius:2px}
+.stat-num{font-size:2.2rem;font-weight:700;color:var(--dark)}
+.stat-label{font-size:12px;color:#888;margin-top:4px;letter-spacing:.3px}
+.mv{background:#fafaf7;border-top:1px solid #f0ece0;border-bottom:1px solid #f0ece0;padding:4rem 2rem}
+.mv-inner{max-width:1100px;margin:0 auto}
+.mv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.mv-card{background:#fff;border:1px solid #e8e0cc;border-radius:10px;padding:2rem;position:relative;overflow:hidden}
+.mv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.mv-icon{font-size:1.8rem;margin-bottom:1rem}
+.mv-title{font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:.75rem}
+.mv-text{font-size:14px;color:#666;line-height:1.7}
+.why{padding:4.5rem 2rem}
+.why-inner{max-width:1100px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:2.5rem}
+.why-card{background:#fff;border:1px solid #e8e0cc;border-radius:10px;padding:1.75rem;text-align:center;transition:border-color .2s,transform .15s}
+.why-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-title{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.why-desc{font-size:13px;color:#777;line-height:1.6}
+.services-bg{background:#fafaf7;border-top:1px solid #f0ece0;border-bottom:1px solid #f0ece0;padding:4.5rem 2rem}
+.services-inner{max-width:1100px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.svc-card{background:#fff;border:1px solid #e8e0cc;border-radius:10px;padding:1.5rem;cursor:pointer;transition:border-color .2s,transform .15s}
+.svc-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.svc-card.open{border-color:var(--gold);border-width:1.5px}
+.svc-icon{width:44px;height:44px;border-radius:8px;background:var(--gold-lighter);border:1px solid #e8d06a;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-size:20px}
+.svc-title{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.svc-desc{font-size:13px;color:#777;line-height:1.6;margin-bottom:.75rem}
+.svc-toggle{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.5px}
+.svc-detail{display:none;border-top:1px solid #f0e8d0;margin-top:.75rem;padding-top:.75rem}
+.svc-card.open .svc-detail{display:block}
+.svc-detail ul{list-style:none;padding:0}
+.svc-detail ul li{font-size:13px;color:#666;padding:4px 0 4px 16px;position:relative;line-height:1.5}
+.svc-detail ul li::before{content:"▸";position:absolute;left:0;color:var(--gold);font-size:10px;top:6px}
+.process{padding:4.5rem 2rem}
+.process-inner{max-width:1100px;margin:0 auto}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:2.5rem}
+.step{text-align:center;padding:1.5rem;position:relative}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-60%);font-size:1.5rem;color:#ddd}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--gold);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;border:3px solid var(--gold-lighter)}
+.step-title{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.step-desc{font-size:13px;color:#777;line-height:1.6}
+.quote-strip{background:var(--dark);padding:3.5rem 2rem;text-align:center}
+.quote-strip blockquote{font-size:clamp(1.1rem,2.5vw,1.5rem);color:#fff;font-weight:300;max-width:750px;margin:0 auto;line-height:1.7;font-style:italic}
+.quote-strip blockquote em{color:var(--gold);font-style:normal;font-weight:600}
+.quote-strip cite{display:block;margin-top:1rem;font-size:13px;color:#777;letter-spacing:2px;font-style:normal}
+.contact-wrap{background:#1a1a1a;padding:5rem 2rem}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info .section-title{color:#fff}
+.contact-info .section-sub{color:#999;margin-bottom:2rem}
+.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.25rem}
+.c-icon{width:38px;height:38px;border-radius:8px;background:rgba(184,150,62,.15);border:1px solid rgba(184,150,62,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.c-label{font-size:11px;color:var(--gold);letter-spacing:1px;margin-bottom:2px;font-weight:600}
+.c-val{font-size:14px;color:#ddd}
+.c-val a{color:#ddd;text-decoration:none}
+.c-val a:hover{color:var(--gold)}
+.cf{background:rgba(255,255,255,.05);border:1px solid rgba(184,150,62,.2);border-radius:10px;padding:2rem}
+.cf-row{margin-bottom:1rem}
+.cf-row label{font-size:12px;color:#aaa;display:block;margin-bottom:6px;letter-spacing:.5px}
+.cf-row input,.cf-row textarea,.cf-row select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:10px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.cf-row select option{color:#333;background:#fff}
+.cf-row input:focus,.cf-row textarea:focus,.cf-row select:focus{border-color:var(--gold)}
+.cf-row input::placeholder,.cf-row textarea::placeholder{color:rgba(255,255,255,.3)}
+.cf-row textarea{height:90px;resize:none}
+.btn-send{background:var(--gold);color:#fff;border:none;padding:13px 28px;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;width:100%;letter-spacing:.5px;transition:background .2s}
+.btn-send:hover{background:#9a7c32}
+footer{background:#111;color:#aaa;padding:3rem 2rem 1.5rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.footer-logo{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:2px;display:block;margin-bottom:.75rem}
+.footer-logo span{color:var(--gold)}
+.footer-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:1rem}
+.footer-social{display:flex;gap:.6rem}
+.footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#777;text-decoration:none;font-size:12px;font-weight:700;transition:all .2s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:600;margin-bottom:1rem;text-transform:uppercase}
+.footer-col a{display:block;font-size:13px;color:#666;text-decoration:none;margin-bottom:.5rem;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-col p{font-size:13px;color:#666;line-height:1.7;margin-bottom:.4rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;text-align:center;font-size:12px;color:#444;max-width:1100px;margin:0 auto}
+.footer-bottom span{color:var(--gold)}
+.wa-btn{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.3);z-index:999;transition:transform .2s}
+.wa-btn:hover{transform:scale(1.1)}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+@media(max-width:768px){
+  .about-grid,.contact-inner,.footer-inner,.mv-grid{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+  .topbar-left span:not(:first-child){display:none}
+  .step:not(:last-child)::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Salta, Argentina</span>
+    <a href="tel:+5493876846580">☎ 387 684-6580</a>
+    <a href="mailto:cecperconsultora@gmail.com">✉ cecperconsultora@gmail.com</a>
+  </div>
+  <div class="topbar-social">
+    <a href="#" title="Facebook">f</a>
+    <a href="#" title="Instagram">ig</a>
+    <a href="#" title="LinkedIn">in</a>
+    <a href="https://wa.me/5493876846580?text=Hola%20CECPER!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n." target="_blank">W</a>
+  </div>
+</div>
+
+<nav>
+  <div>
+    <a class="nav-logo" href="index.html">CEC<span>PER</span></a>
+    <span class="nav-sub">Consultoría Integral</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">Quiénes somos</a>
+    <a href="#services">Servicios</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="bolsa.html">Bolsa de trabajo</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <a class="nav-cta" href="#contact">Consulta gratuita</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">CECPER · SALTA, ARGENTINA · 2026</div>
+  <h1>Conectando Personas,<br><em>Estrategias y Recursos</em></h1>
+  <p>Consultoría integral para emprendedores y empresas. Acompañamos cada etapa de tu proyecto con un equipo multidisciplinario de 8 especialidades.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#services">Ver nuestros servicios</a>
+    <a class="btn-outline" href="#contact">Consulta sin cargo</a>
+  </div>
+</div>
+
+<div class="clients-strip">
+  <p>Trabajamos con emprendedores y empresas del NOA</p>
+  <div class="clients-logos">
+    <div class="client-pill">PyMEs</div>
+    <div class="client-pill">Emprendedores</div>
+    <div class="client-pill">Startups</div>
+    <div class="client-pill">Comercios</div>
+    <div class="client-pill">Industrias</div>
+    <div class="client-pill">Profesionales</div>
+  </div>
+</div>
+
+<div id="about" class="section">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">Quiénes somos</div>
+      <div class="section-title">Un equipo multidisciplinario a tu servicio</div>
+      <div class="about-text">
+        <p>En CECPER somos profesionales unidos por un objetivo común: acompañar a emprendedores y empresas en el proceso de convertir sus ideas en negocios sólidos y sustentables.</p>
+        <p>Contamos con especialistas en contabilidad, derecho, recursos humanos, arquitectura, psicología, ingeniería industrial e higiene y seguridad.</p>
+      </div>
+      <div class="about-accent">
+        <p>"Esta diversidad nos permite ofrecer una mirada integral que ninguna consultora unidisciplinaria puede brindar, acompañándote en cada etapa del ciclo de vida de tu proyecto."</p>
+      </div>
+    </div>
+    <div>
+      <div class="stats">
+        <div class="stat"><div class="stat-bar"></div><div class="stat-num">8</div><div class="stat-label">Áreas especializadas</div></div>
+        <div class="stat"><div class="stat-bar"></div><div class="stat-num">360°</div><div class="stat-label">Visión integral</div></div>
+        <div class="stat"><div class="stat-bar"></div><div class="stat-num">100%</div><div class="stat-label">Compromiso</div></div>
+        <div class="stat"><div class="stat-bar"></div><div class="stat-num">∞</div><div class="stat-label">Potencial</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mv">
+  <div class="mv-inner">
+    <div class="section-label">Nuestra identidad</div>
+    <div class="section-title">Lo que nos guía</div>
+    <div class="mv-grid">
+      <div class="mv-card"><div class="mv-icon">🎯</div><div class="mv-title">Misión</div><div class="mv-text">Ser socios estratégicos de nuestros clientes, brindando soluciones integrales que contribuyan al crecimiento y sustentabilidad de sus proyectos y empresas.</div></div>
+      <div class="mv-card"><div class="mv-icon">🔭</div><div class="mv-title">Visión</div><div class="mv-text">Ser la consultora de referencia del NOA, reconocida por la calidad integral de nuestros servicios y por el impacto real que generamos en cada empresa que acompañamos.</div></div>
+      <div class="mv-card"><div class="mv-icon">💎</div><div class="mv-title">Valores</div><div class="mv-text">Profesionalismo, trabajo en equipo, ética, compromiso con el cliente y orientación a resultados concretos y medibles en cada proyecto.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="why">
+  <div class="why-inner">
+    <div class="section-label">Por qué elegirnos</div>
+    <div class="section-title">La ventaja CECPER</div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🏆</div><div class="why-title">Equipo multidisciplinario</div><div class="why-desc">8 áreas de especialidad bajo un mismo techo. No necesitás buscar distintos profesionales para cada problema.</div></div>
+      <div class="why-card"><div class="why-icon">🎯</div><div class="why-title">Enfoque integral</div><div class="why-desc">Analizamos tu empresa desde todas las dimensiones: legal, contable, humana, operativa y técnica.</div></div>
+      <div class="why-card"><div class="why-icon">📍</div><div class="why-title">Presencia local</div><div class="why-desc">Conocemos la realidad del mercado salteño y del NOA. Somos parte de la comunidad empresarial.</div></div>
+      <div class="why-card"><div class="why-icon">🤝</div><div class="why-title">Consulta inicial gratuita</div><div class="why-desc">Analizamos tu situación sin costo. Proponemos el mejor camino antes de cualquier compromiso.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="services-bg" id="services">
+  <div class="services-inner">
+    <div class="section-label">Nuestros servicios</div>
+    <div class="section-title">Soluciones para cada etapa de tu empresa</div>
+    <p class="section-sub">Hacé clic en cada servicio para ver el detalle de lo que ofrecemos.</p>
+    <div class="services-grid" id="svcGrid"></div>
+  </div>
+</div>
+
+<div class="process" id="proceso">
+  <div class="process-inner">
+    <div class="section-label">Cómo trabajamos</div>
+    <div class="section-title">Un proceso claro y transparente</div>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-title">Consulta inicial</div><div class="step-desc">Sin cargo. Escuchamos tu situación y entendemos tus necesidades.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Diagnóstico</div><div class="step-desc">Analizamos tu empresa desde todas las áreas relevantes.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Propuesta</div><div class="step-desc">Te presentamos un plan de acción claro con objetivos y plazos.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Implementación</div><div class="step-desc">Ejecutamos junto a tu equipo y medimos resultados concretos.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="quote-strip">
+  <blockquote>"Creemos que crecer no se trata de tener un buen producto o grandes ideas, sino de <em>conectar las personas correctas</em> y usar los recursos de manera inteligente."<cite>— EQUIPO CECPER</cite></blockquote>
+</div>
+
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contacto</div>
+      <div class="section-title">¿Listo para el próximo paso?</div>
+      <p class="section-sub">Contactanos y agendá una consulta inicial sin cargo.</p>
+      <div class="contact-item"><div class="c-icon">✉</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:cecperconsultora@gmail.com">cecperconsultora@gmail.com</a></div></div></div>
+      <div class="contact-item"><div class="c-icon">☎</div><div><div class="c-label">Cr. Luciano Cecchi</div><div class="c-val"><a href="tel:+5493876846580">387 684-6580</a></div></div></div>
+      <div class="contact-item"><div class="c-icon">☎</div><div><div class="c-label">Lic. Eveling María Andrea</div><div class="c-val"><a href="tel:+5493875798734">387 579-8734</a></div></div></div>
+      <div class="contact-item"><div class="c-icon">📍</div><div><div class="c-label">Ubicación</div><div class="c-val">Salta, Argentina</div></div></div>
+      <div class="contact-item"><div class="c-icon">🕐</div><div><div class="c-label">Horario de atención</div><div class="c-val">Lunes a Viernes · 9:00 a 18:00 hs</div></div></div>
+    </div>
+    <form class="cf" action="https://formspree.io/f/xeevegbg" method="POST">
+      <div class="cf-row"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre completo" required></div>
+      <div class="cf-row"><label>Email</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+      <div class="cf-row"><label>Teléfono</label><input type="tel" name="telefono" placeholder="Tu número de contacto"></div>
+      <div class="cf-row"><label>Área de interés</label>
+        <select name="area">
+          <option value="">Seleccioná un servicio...</option>
+          <option>Contabilidad e Impuestos</option>
+          <option>Asesoramiento Legal</option>
+          <option>Recursos Humanos</option>
+          <option>Arquitectura y Espacio</option>
+          <option>Ingeniería de Procesos</option>
+          <option>Psicología Organizacional</option>
+          <option>Higiene y Seguridad Laboral</option>
+          <option>Desarrollo de Proyectos</option>
+          <option>Consulta general</option>
+        </select>
+      </div>
+      <div class="cf-row"><label>Consulta</label><textarea name="consulta" placeholder="¿En qué podemos ayudarte?" required></textarea></div>
+      <button type="submit" class="btn-send">Enviar consulta</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-logo">CEC<span>PER</span></span>
+      <p class="footer-desc">Consultoría integral para emprendedores y empresas de Salta y el NOA.</p>
+      <div class="footer-social">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Instagram">ig</a>
+        <a href="#" title="LinkedIn">in</a>
+        <a href="https://wa.me/5493876846580?text=Hola%20CECPER!" target="_blank">W</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <a href="#services">Contabilidad e Impuestos</a>
+      <a href="#services">Asesoramiento Legal</a>
+      <a href="#services">Recursos Humanos</a>
+      <a href="#services">Arquitectura y Espacio</a>
+      <a href="#services">Ingeniería de Procesos</a>
+      <a href="#services">Psicología Organizacional</a>
+      <a href="#services">Higiene y Seguridad</a>
+      <a href="#services">Desarrollo de Proyectos</a>
+      <a href="bolsa.html">Bolsa de trabajo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>📍 Salta, Argentina</p>
+      <p>🕐 Lun–Vie · 9:00 a 18:00</p>
+      <a href="mailto:cecperconsultora@gmail.com">cecperconsultora@gmail.com</a>
+      <a href="tel:+5493876846580">387 684-6580 (Luciano)</a>
+      <a href="tel:+5493875798734">387 579-8734 (Eveling)</a>
+      <a href="bolsa.html">Bolsa de trabajo</a>
+      <a href="#contact">Consulta gratuita</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 <span>CECPER</span> Consultoría Integral · Salta, Argentina · Todos los derechos reservados</div>
+</footer>
+
+<a class="wa-btn" href="https://wa.me/5493876846580?text=Hola%20CECPER!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const svcs=[
+  {icon:"📊",title:"Contabilidad e Impuestos",desc:"Gestión contable e impositiva integral para que te concentrés en tu negocio.",items:["Liquidación de IVA, Ganancias y Bienes Personales","Estados contables y balances","Planificación fiscal estratégica","Auditoría y control interno","Proyecciones financieras y flujo de fondos"]},
+  {icon:"⚖️",title:"Asesoramiento Legal",desc:"Cobertura jurídica completa: desde la elección de figura legal hasta contratos y permisos.",items:["Constitución de sociedades","Contratos comerciales y laborales","Habilitaciones y permisos municipales","Propiedad intelectual y marcas","Defensa en juicios laborales"]},
+  {icon:"👥",title:"Recursos Humanos",desc:"Construimos equipos sólidos, desde el reclutamiento hasta la gestión del clima organizacional.",items:["Selección y reclutamiento","Liquidación de sueldos y jornales","Diseño organizacional","Capacitación y desarrollo","Evaluación de desempeño 360°"]},
+  {icon:"🏗️",title:"Arquitectura y Espacio",desc:"Diseñamos y optimizamos espacios físicos cumpliendo normativas y potenciando tu operación.",items:["Proyecto arquitectónico y planos","Adecuación de locales comerciales","Gestión de permisos de obra","Renders y visualización 3D","Optimización de layout productivo"]},
+  {icon:"⚙️",title:"Ingeniería de Procesos",desc:"Analizamos y optimizamos procesos operativos para maximizar eficiencia y reducir costos.",items:["Mapeo de procesos (AS IS / TO BE)","Análisis de cuellos de botella","Implementación de sistemas de calidad","Preparación para certificaciones ISO","KPIs operativos y control estadístico"]},
+  {icon:"🧠",title:"Psicología Organizacional",desc:"Trabajamos el liderazgo, comunicación y bienestar para crear organizaciones saludables.",items:["Diagnóstico de clima organizacional","Coaching a líderes y fundadores","Evaluaciones psicolaborales","Talleres de inteligencia emocional","Acompañamiento en procesos de cambio"]},
+  {icon:"🦺",title:"Higiene y Seguridad Laboral",desc:"Garantizamos ambientes de trabajo seguros conforme a normativa SRT vigente.",items:["Programa Anual H y S (SRT)","Evaluación de riesgos por puesto","Capacitación en prevención","Inspección de instalaciones eléctricas","Gestión documental ante ART y SRT"]},
+  {icon:"🚀",title:"Desarrollo de Proyectos",desc:"Acompañamos emprendedores desde la idea hasta la puesta en marcha con enfoque integral.",items:["Formulación y evaluación de proyectos","Plan de negocios y modelo de ingresos","Análisis de viabilidad técnica y económica","Estrategia de lanzamiento y crecimiento","Asesoramiento técnico, legal y financiero"]}
+];
+const grid=document.getElementById('svcGrid');
+svcs.forEach(s=>{
+  const c=document.createElement('div');
+  c.className='svc-card';
+  c.innerHTML=`<div class="svc-icon">${s.icon}</div><div class="svc-title">${s.title}</div><div class="svc-desc">${s.desc}</div><div class="svc-toggle">Ver detalle ▾</div><div class="svc-detail"><ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+  c.addEventListener('click',()=>{const o=c.classList.toggle('open');c.querySelector('.svc-toggle').textContent=o?'Ocultar ▴':'Ver detalle ▾';});
+  grid.appendChild(c);
+});
+</script>
+</body>
+</html>
